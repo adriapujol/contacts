@@ -1,10 +1,11 @@
 import React from 'react';
 import './Contact.scss';
 
-const Contact = ({ id, name, lastName, email, phone, setContacts }) => {
+const Contact = ({ contact, setContacts, setEdit }) => {
+
+    const { _id, name, lastName, email, phone } = contact;
 
     const deleteUser = async (id) => {
-        console.log('this is the ID FROM FRONTEND:', id);
         try {
             let response = await fetch(`http://localhost:3001/delete/${id}`, {
                 method: 'DELETE',
@@ -15,14 +16,16 @@ const Contact = ({ id, name, lastName, email, phone, setContacts }) => {
             if (response.ok) {
                 setContacts(prevContacts => {
                     const newContacts = prevContacts.filter(contact => contact._id !== id);
-                    console.log(newContacts);
                     return newContacts;
                 })
+                //HANDLE DELETE RESPONSE
                 console.log("Deleted succesfully");
             } else {
+                //HANDE DELETE ERROR
                 console.error("Could not delete");
             }
         } catch (err) {
+            // HANDLE SERVER ERROR
             console.log(err);
         }
     };
@@ -34,7 +37,8 @@ const Contact = ({ id, name, lastName, email, phone, setContacts }) => {
             <div className="lastname">{lastName}</div>
             <div className="email">{email}</div>
             <div className="phone">{phone}</div>
-            <div className="delete-user" onClick={() => deleteUser(id)} >DELETE</div>
+            <div className="edit-user" onClick={() => setEdit(contact)} >EDIT</div>
+            <div className="delete-user" onClick={() => deleteUser(_id)} >DELETE</div>
         </div>
     )
 }
