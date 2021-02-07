@@ -1,7 +1,7 @@
 import React from 'react';
 import './Contact.scss';
 
-const Contact = ({ contact, setContacts, setEdit }) => {
+const Contact = ({ contact, setContacts, setEdit, setShowForm }) => {
 
     const { _id, name, lastName, email, phone } = contact;
 
@@ -30,6 +30,11 @@ const Contact = ({ contact, setContacts, setEdit }) => {
         }
     };
 
+    const editContact = () => {
+        setEdit(contact);
+        setShowForm(true);
+    }
+
 
     return (
         <div className="contact-card">
@@ -37,7 +42,7 @@ const Contact = ({ contact, setContacts, setEdit }) => {
             <div className="lastname">{lastName}</div>
             <div className="email">{email}</div>
             <div className="phone">{phone}</div>
-            <div className="edit-user" onClick={() => setEdit(contact)} >EDIT</div>
+            <div className="edit-user" onClick={editContact} >EDIT</div>
             <div className="delete-user" onClick={() => deleteUser(_id)} >DELETE</div>
         </div>
     )

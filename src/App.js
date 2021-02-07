@@ -7,6 +7,7 @@ import Form from './components/Form';
 function App() {
   const [contacts, setContacts] = useState([]);
   const [edit, setEdit] = useState({});
+  const [showForm, setShowForm] = useState(false);
 
 
   useEffect(() => {
@@ -26,12 +27,14 @@ function App() {
 
   return (
     <div className="App">
-      <Form setContacts={setContacts} />
-      {Object.keys(edit).length !== 0 ? <Form setContacts={setContacts} contact={edit} /> : null}
+
+      {showForm && (Object.keys(edit).length !== 0 ? <Form setContacts={setContacts} contact={edit} setShowForm={setShowForm} setEdit={setEdit} /> : <Form setContacts={setContacts} setShowForm={setShowForm} />)}
       <div>
+        <input type="text" />
+        <button className="add-button" onClick={() => setShowForm(true)}>Add Contact</button>
         <h2>Contacts</h2>
         {contacts.map((contact, index) => {
-          return <Contact key={index} contact={contact} setContacts={setContacts} setEdit={setEdit} />
+          return <Contact key={index} contact={contact} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} />
         })}
       </div>
     </div>

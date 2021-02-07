@@ -1,6 +1,19 @@
-.add-contact {
+.add-container {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 500px;
+    align-items: center;
+
+    .add-form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: white;
+        padding: 2em;
+        width: 500px;
+    }
 }
