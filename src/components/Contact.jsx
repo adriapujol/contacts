@@ -7,7 +7,7 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm }) => {
 
     const deleteUser = async (id) => {
         try {
-            let response = await fetch(`http://localhost:3001/delete/${id}`, {
+            let response = await fetch(`http://localhost:3001/contacts/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json"

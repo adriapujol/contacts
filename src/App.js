@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./App.scss";
-import Contact from './components/Contact';
+import ContactsList from './components/ContactsList';
+import Header from './components/Header';
 import Form from './components/Form';
 
 
@@ -8,34 +9,41 @@ function App() {
   const [contacts, setContacts] = useState([]);
   const [edit, setEdit] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [searchField, setSearchField] = useState('');
 
 
   useEffect(() => {
 
-    // HANDE TRY CATCK FETCHING DATA
     const fetchData = async () => {
       try {
-        let response = await fetch('http://localhost:3001/read');
+        let response = await fetch('http://localhost:3001/contacts/');
         let contacts = await response.json();
+        setLoading(false);
         setContacts(contacts);
       } catch (err) {
+        setLoading(false);
+        setErrorMessage("Couldn't fetch the contacts.")
         console.error(err);
       }
     }
     fetchData();
   }, [])
 
+  const filteredList = contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(searchField.toLowerCase()) || contact.lastName.toLowerCase().includes(searchField.toLowerCase());
+  })
+
   return (
     <div className="App">
-
+      <Header setSearchField={setSearchField} setShowForm={setShowForm} />
       {showForm && (Object.keys(edit).length !== 0 ? <Form setContacts={setContacts} contact={edit} setShowForm={setShowForm} setEdit={setEdit} /> : <Form setContacts={setContacts} setShowForm={setShowForm} />)}
       <div>
-        <input type="text" />
-        <button className="add-button" onClick={() => setShowForm(true)}>Add Contact</button>
         <h2>Contacts</h2>
-        {contacts.map((contact, index) => {
-          return <Contact key={index} contact={contact} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} />
-        })}
+        {loading && <div className="loading">Loading...</div>}
+        {errorMessage}
+        <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} />
       </div>
     </div>
   );
