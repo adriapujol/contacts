@@ -3,6 +3,7 @@ import "./App.scss";
 import ContactsList from './components/ContactsList';
 import Header from './components/Header';
 import Form from './components/Form';
+import Loading from './components/Loading';
 
 
 function App() {
@@ -39,9 +40,9 @@ function App() {
     <div className="App">
       <Header setSearchField={setSearchField} setShowForm={setShowForm} />
       {showForm && (Object.keys(edit).length !== 0 ? <Form setContacts={setContacts} contact={edit} setShowForm={setShowForm} setEdit={setEdit} /> : <Form setContacts={setContacts} setShowForm={setShowForm} />)}
-      <div>
-        <h2>Contacts</h2>
-        {loading && <div className="loading">Loading...</div>}
+      <div className="contacts-box">
+        {/* <Loading></Loading> */}
+        {loading && <Loading />}
         {errorMessage}
         <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} />
       </div>

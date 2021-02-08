@@ -1,0 +1,55 @@
+@import '../colors';
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    animation: appear 0.5s ease;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+
+    .content-wrapper {
+        position: relative;
+        .spinner {
+            padding: 3em;
+            border-radius: 50%;
+            border: 5px solid rgba($color: #000000, $alpha: 0);
+            border-top-color: $border;
+            border-bottom-color: $border;
+    
+            animation: spinner 1s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+
+}
+
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

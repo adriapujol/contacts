@@ -38,12 +38,17 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm }) => {
 
     return (
         <div className="contact-card">
-            <div className="name">{name}</div>
-            <div className="lastname">{lastName}</div>
-            <div className="email">{email}</div>
-            <div className="phone">{phone}</div>
-            <div className="edit-user" onClick={editContact} >EDIT</div>
-            <div className="delete-user" onClick={() => deleteUser(_id)} >DELETE</div>
+
+            <label>Full name:</label>
+            <div className="info name">{`${name} ${lastName}`}</div>
+            <label>Email:</label>
+            <div className="info email">{email}</div>
+            <label>Phone:</label>
+            <div className="info phone">{phone}</div>
+            <div className="control-box">
+                <div className="edit-user" onClick={editContact} ><i className="fas fa-pen" /></div>
+                <div className="delete-user" onClick={() => deleteUser(_id)} ><i className="fas fa-trash-alt" /></div>
+            </div>
         </div>
     )
 }

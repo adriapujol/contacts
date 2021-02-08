@@ -1,9 +1,27 @@
+@import './colors';
+
 .App {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
+button {
+    padding: 1em;
+    font-size: 1.1em;
+    background-color: $background;
+    border: 2px solid $border;
+    color: #ffffff;
+    border-radius: 20px;
+    transition: 0.1s all ease-in-out;
+    cursor: pointer;
+
+    
+    &:hover{
+        background-color: $altText;
+    }
+    
+    &:focus {
+        outline: none;
+        background-color: $border;
+    }
+}

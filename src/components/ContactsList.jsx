@@ -1,5 +1,6 @@
 import React from 'react'
 import Contact from './Contact';
+import './ContactsList.scss';
 
 const ContactsList = ({ contactsList, setContacts, setEdit, setShowForm }) => {
     return (

@@ -1,7 +1,44 @@
+@import '../colors';
+
 .contact-card {
     display: flex;
-    justify-content: space-between;
-    background-color: aquamarine;
-    margin: 5px;
-    width: 100%;
+    justify-content: space-evenly;
+    background-color: $backgroundContact;
+    margin-bottom: 2em;
+    width: 70%;
+    min-width: 500px;
+    max-width: 700px;
+
+    padding: 2em;
+    border-radius: 20px;
+    border: 2px solid $border;
+    box-shadow: 5px 8px 5px rgba($color: #000000, $alpha: 0.2);
+    
+    .info {
+        flex: 1;
+        max-width: 150px;
+        overflow: hidden;
+    }
+
+    label, .control-box {
+        color: $altText ;
+    }
+    label, .info {
+        margin-right: 8px;
+    }
+
+    .control-box {
+        display: flex;
+        justify-content: space-around;
+        width:50px;
+
+        i {
+            cursor: pointer;
+
+            &:hover {
+                color: $altTextHover;
+            }
+        }
+
+    }
 }

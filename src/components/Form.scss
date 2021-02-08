@@ -1,3 +1,5 @@
+ @import '../colors';
+
 .add-container {
     position: absolute;
     height: 100vh;
@@ -12,8 +14,68 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        background-color: white;
+        background-color: $background;
+        border: 2px solid $border;
+        border-radius: 25px;
         padding: 2em;
         width: 500px;
+
+        label, i {
+            color: $altText;
+            font-size: 1.3em;
+        }
+        label {
+            margin-bottom: 0.3em;
+        }
+
+        i {
+            cursor: pointer;
+
+            &:hover {
+                color: $altTextHover;
+            }
+        }
+
+        .close-form {
+            align-self: flex-end;
+        }
+        button {
+            align-self: center;
+            width: 200px;
+        }
+
+        input {
+            margin-bottom: 1em;
+            padding: 1em;
+            font-size: 1.1em;
+            border-radius: 15px;
+            background-color: $backgroundContact;
+            color: #ffffff;
+            width: 90%;
+            border: 2px solid rgba($color: #000000, $alpha: 0);
+    
+            &::placeholder {
+                color: #cacaca;
+            }
+    
+            &:focus {
+                outline: none;
+                border: 2px solid $border;
+            }
+        }
+
+        .required {
+            font-size: 0.8em;
+            color: $backgroundContact;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            margin: 1em 0;
+            height: 20px;
+            text-align: center;
+            color: $error;
+
+        }
     }
 }
