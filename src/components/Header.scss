@@ -31,6 +31,10 @@
             outline: none;
             border: 2px solid $border;
         }
+
+        @media only screen and (max-width: 490px) {
+            width: 60%;
+        }
     }
 
     .logo {
@@ -43,4 +47,18 @@
             display: none;
         }
     }
+
+    button {
+        i {
+            transform: translateX(3px);
+            color: $border;
+        }
+
+        &:hover {
+            i {
+                color: #ffffff;
+            }
+        }
+    }
+
 }

@@ -90,13 +90,13 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
             <form className="add-form" onSubmit={formSubmit}>
                 <div className="close-form" onClick={closeForm}><i className="fas fa-times-circle"></i></div>
                 <label>Name{contact ? null : "*"}</label>
-                <input type="text" onChange={e => setName(e.target.value)} placeholder={contact ? contact.name : null} />
+                <input type="text" onChange={e => setName(e.target.value)} placeholder={contact ? contact.name : null} maxLength="20" />
                 <label>Last Name{contact ? null : "*"}</label>
-                <input type="text" onChange={e => setLastName(e.target.value)} placeholder={contact ? contact.lastName : null} />
+                <input type="text" onChange={e => setLastName(e.target.value)} placeholder={contact ? contact.lastName : null} maxLength="20" />
                 <label>Email{contact ? null : "*"}</label>
                 <input type="email" onChange={e => setEmail(e.target.value)} placeholder={contact ? contact.email : null} />
                 <label>Phone{contact ? null : "*"}</label>
-                <input type="text" onChange={e => setPhone(e.target.value)} placeholder={contact ? contact.phone : null} />
+                <input type="text" onChange={e => setPhone(e.target.value)} placeholder={contact ? contact.phone : null} maxLength="50" />
                 {contact ? null : <div className="required">(*)Required</div>}
                 <div className="error-message">{errorMessage}</div>
                 <button type="submit" >{contact ? "SAVE" : "ADD"}</button>
