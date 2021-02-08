@@ -4,6 +4,7 @@ import ContactsList from './components/ContactsList';
 import Header from './components/Header';
 import Form from './components/Form';
 import Loading from './components/Loading';
+import Message from './components/Message';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [edit, setEdit] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchField, setSearchField] = useState('');
 
@@ -25,7 +27,7 @@ function App() {
         setContacts(contacts);
       } catch (err) {
         setLoading(false);
-        setErrorMessage("Couldn't fetch the contacts.")
+        setErrorMessage("There was an error. Try again later.")
         console.error(err);
       }
     }
@@ -43,8 +45,9 @@ function App() {
       <div className="contacts-box">
         {/* <Loading></Loading> */}
         {loading && <Loading />}
-        {errorMessage}
-        <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} />
+        {errorMessage && <Message message={errorMessage} type="error" />}
+        {successMessage && <Message message={successMessage} type="success" />}
+        <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} setSuccessMessage={setSuccessMessage} setErrorMessage={setErrorMessage} />
       </div>
     </div>
   );

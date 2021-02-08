@@ -1,11 +1,13 @@
 import React from 'react';
 import './Contact.scss';
 
-const Contact = ({ contact, setContacts, setEdit, setShowForm }) => {
+const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage, setErrorMessage }) => {
 
     const { _id, name, lastName, email, phone } = contact;
 
     const deleteUser = async (id) => {
+        setErrorMessage("");
+        setSuccessMessage("");
         try {
             let response = await fetch(`http://localhost:3001/contacts/delete/${id}`, {
                 method: 'DELETE',
@@ -18,15 +20,14 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm }) => {
                     const newContacts = prevContacts.filter(contact => contact._id !== id);
                     return newContacts;
                 })
-                //HANDLE DELETE RESPONSE
-                console.log("Deleted succesfully");
+                setSuccessMessage("Contact deleted successfully");
             } else {
                 //HANDE DELETE ERROR
-                console.error("Could not delete");
+                setErrorMessage("Couldn't delete the contact");
             }
-        } catch (err) {
+        } catch {
             // HANDLE SERVER ERROR
-            console.log(err);
+            setErrorMessage("Couldn't delete the contact");
         }
     };
 
