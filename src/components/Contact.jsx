@@ -22,11 +22,9 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage
                 })
                 setSuccessMessage("Contact deleted successfully");
             } else {
-                //HANDE DELETE ERROR
                 setErrorMessage("Couldn't delete the contact");
             }
         } catch {
-            // HANDLE SERVER ERROR
             setErrorMessage("Couldn't delete the contact");
         }
     };
@@ -36,12 +34,18 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage
         setShowForm(true);
     }
 
+    const capitalizer = (word) => {
+        const firstLetter = word.charAt(0).toUpperCase();
+        const rest = word.slice(1);
+        return firstLetter + rest;
+    }
+
 
     return (
         <div className="contact-card">
 
             <label>Full name:</label>
-            <div className="info name">{`${name} ${lastName}`}</div>
+            <div className="info name">{`${capitalizer(name)} ${capitalizer(lastName)}`}</div>
             <label>Email:</label>
             <div className="info email">{email}</div>
             <label>Phone:</label>

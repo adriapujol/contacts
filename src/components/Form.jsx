@@ -13,7 +13,7 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
     const addContact = async () => {
         setErrorMessage('');
         if (name === '' || lastName === '' || email === '' || phone === '') return setErrorMessage("All fields required");
-        const data = { name: name, lastName: lastName, email: email, phone: phone };
+        const data = { name: name.trim(), lastName: lastName.trim(), email: email.toLowerCase().trim(), phone: phone.trim() };
         try {
             let response = await fetch('http://localhost:3001/contacts/new', {
                 method: 'POST',
@@ -40,10 +40,10 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
     const editContact = async (id) => {
 
         setErrorMessage('');
-        const data = { name: name, lastName: lastName, email: email, phone: phone };
+        const data = { name: name.trim(), lastName: lastName.trim(), email: email.toLowerCase().trim(), phone: phone.trim() };
 
-        if (data.name === "") data.name = contact.name;
-        if (data.lastName === "") data.lastName = contact.lastName;
+        if (data.name === '') data.name = contact.name;
+        if (data.lastName === '""') data.lastName = contact.lastName;
         if (data.email === '') data.email = contact.email;
         if (data.phone === '') data.phone = contact.phone;
 
