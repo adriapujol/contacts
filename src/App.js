@@ -42,15 +42,21 @@ function App() {
   return (
     <div className="App">
       <Header setSearchField={setSearchField} setShowForm={setShowForm} />
-      {showForm && (Object.keys(edit).length !== 0 ? <Form setContacts={setContacts} contact={edit} setShowForm={setShowForm} setEdit={setEdit} /> : <Form setContacts={setContacts} setShowForm={setShowForm} />)}
+      {
+        showForm && (Object.keys(edit).length !== 0 ?
+          <Form setContacts={setContacts} contact={edit} setShowForm={setShowForm} setEdit={setEdit} />
+          :
+          <Form setContacts={setContacts} setShowForm={setShowForm} />)
+      }
       <div className="contacts-box">
         {loading && <Loading />}
         {errorMessage && <Message message={errorMessage} type="error" />}
         {successMessage && <Message message={successMessage} type="success" />}
-        {(!loading && contacts.length !== 0) ?
-          <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} setSuccessMessage={setSuccessMessage} setErrorMessage={setErrorMessage} />
-          :
-          <div className="no-contacts">There are no contacts yet</div>
+        {
+          (!loading && contacts.length !== 0) ?
+            <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} setSuccessMessage={setSuccessMessage} setErrorMessage={setErrorMessage} />
+            :
+            <div className="no-contacts">There are no contacts yet</div>
         }
       </div>
     </div>
