@@ -1,6 +1,6 @@
 # Contacts
 
-This projects let's you get, add, edit and delete contacts. 
+This projects lets you get, add, edit and delete contacts. 
 
 Live demo deployed with gh-pages and heroku: 
 https://adriapujol.github.io/contacts/
