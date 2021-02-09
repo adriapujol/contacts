@@ -24,8 +24,8 @@ function App() {
       try {
         let response = await fetch(`${url}/contacts`);
         let contacts = await response.json();
-        setLoading(false);
         setContacts(contacts);
+        setLoading(false);
       } catch (err) {
         setLoading(false);
         setErrorMessage("There was an error. Try again later.")
@@ -49,15 +49,16 @@ function App() {
           <Form setContacts={setContacts} setShowForm={setShowForm} />)
       }
       <div className="contacts-box">
-        {loading && <Loading />}
+        {loading ? <Loading />
+          :
+          contacts.length === 0 ?
+            <div className="no-contacts">There are no contacts yet</div>
+            :
+            <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} setSuccessMessage={setSuccessMessage} setErrorMessage={setErrorMessage} />
+
+        }
         {errorMessage && <Message message={errorMessage} type="error" />}
         {successMessage && <Message message={successMessage} type="success" />}
-        {
-          (!loading && contacts.length !== 0) ?
-            <ContactsList contactsList={filteredList} setContacts={setContacts} setEdit={setEdit} setShowForm={setShowForm} setSuccessMessage={setSuccessMessage} setErrorMessage={setErrorMessage} />
-            :
-            <div className="no-contacts">There are no contacts yet</div>
-        }
       </div>
     </div>
   );

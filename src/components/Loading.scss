@@ -1,4 +1,5 @@
 @import '../colors';
+@import '../animations';
 
 .loading {
     position: absolute;
@@ -21,7 +22,7 @@
             border-bottom-color: $border;
     
             animation: spinner 1s infinite;
-            animation-delay: 0.5s;
+            animation-delay: 0.3s;
         }
 
         .text {
