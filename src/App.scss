@@ -8,6 +8,12 @@
 
 .contacts-box {
     margin-top: 15vh;
+
+    .no-contacts {
+        text-align: center;
+        color: $altText;
+        font-size: 1.5em;
+    }
 }
 
 button {

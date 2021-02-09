@@ -1,4 +1,5 @@
 import React from 'react';
+import { url } from '../DatabaseURL';
 import './Contact.scss';
 
 const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage, setErrorMessage }) => {
@@ -9,7 +10,7 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage
         setErrorMessage("");
         setSuccessMessage("");
         try {
-            let response = await fetch(`http://localhost:3001/contacts/delete/${id}`, {
+            let response = await fetch(`${url}/contacts/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json"
@@ -44,7 +45,6 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage
     return (
         <div className="contact-card">
 
-            {/* <label>Name:</label> */}
             <h3 className="info name">{`${capitalizer(name)} ${capitalizer(lastName)}`}</h3>
             <label>Email:</label>
             <div className="info email">{email}</div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { url } from '../DatabaseURL';
 import './Form.scss';
 
 const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
@@ -15,7 +16,7 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
         if (name === '' || lastName === '' || email === '' || phone === '') return setErrorMessage("All fields required");
         const data = { name: name.trim(), lastName: lastName.trim(), email: email.toLowerCase().trim(), phone: phone.trim() };
         try {
-            let response = await fetch('http://localhost:3001/contacts/new', {
+            let response = await fetch(`${url}/contacts/new`, {
                 method: 'POST',
                 headers: {
                     "Accpet": "application/json",
@@ -43,12 +44,12 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
         const data = { name: name.trim(), lastName: lastName.trim(), email: email.toLowerCase().trim(), phone: phone.trim() };
 
         if (data.name === '') data.name = contact.name;
-        if (data.lastName === '""') data.lastName = contact.lastName;
+        if (data.lastName === '') data.lastName = contact.lastName;
         if (data.email === '') data.email = contact.email;
         if (data.phone === '') data.phone = contact.phone;
 
         try {
-            let response = await fetch(`http://localhost:3001/contacts/edit/${contact._id}`, {
+            let response = await fetch(`${url}/contacts/edit/${contact._id}`, {
                 method: 'PUT',
                 headers: {
                     "Accpet": "application/json",
@@ -60,7 +61,6 @@ const Form = ({ setContacts, contact, setShowForm, setEdit }) => {
             if (json.message) {
                 setErrorMessage(json.message);
             } else {
-                console.log("UPADTE RESPONSE: ", json);
                 setContacts(prevContacts => {
                     const newContacts = prevContacts.map(contact => contact._id === id ? json : contact);
                     return [...newContacts]
