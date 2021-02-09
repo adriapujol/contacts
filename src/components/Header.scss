@@ -34,6 +34,7 @@
 
         @media only screen and (max-width: 490px) {
             width: 60%;
+            padding: 0.6em;
         }
     }
 
@@ -58,6 +59,10 @@
             i {
                 color: #ffffff;
             }
+        }
+
+        @media only screen and (max-width: 490px) {
+            padding: 0.6em;
         }
     }
 
