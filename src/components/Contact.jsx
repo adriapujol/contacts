@@ -44,8 +44,8 @@ const Contact = ({ contact, setContacts, setEdit, setShowForm, setSuccessMessage
     return (
         <div className="contact-card">
 
-            <label>Full name:</label>
-            <div className="info name">{`${capitalizer(name)} ${capitalizer(lastName)}`}</div>
+            {/* <label>Name:</label> */}
+            <h3 className="info name">{`${capitalizer(name)} ${capitalizer(lastName)}`}</h3>
             <label>Email:</label>
             <div className="info email">{email}</div>
             <label>Phone:</label>
