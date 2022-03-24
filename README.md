@@ -2,14 +2,13 @@
 
 This projects lets you get, add, edit and delete contacts. 
 
-Live demo deployed with gh-pages and heroku: 
-https://adriapujol.github.io/contacts/
+Live demo deployed with gh-pages and heroku.
+
+## [Demo](https://adriapujol.github.io/contacts/)
 
 CRUD app using the MERN stack.
 
-The backend is in another repository:
-https://github.com/adriapujol/contacts-backend
-
+The backend is in another repository. [Here](https://github.com/adriapujol/contacts-backend)
 
 
 ## Available Scripts
